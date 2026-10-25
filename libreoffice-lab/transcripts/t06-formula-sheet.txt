@@ -1,0 +1,22 @@
+$ what openpyxl wrote (data_only=False):
+['Item', 'Packets', 'Price', 'Line total']
+["Tomato - Gardener's Delight", 6, 2.5, '=B2*C2']
+['Sweet Pea - Spencer Mixed', 4, 1.95, '=B3*C3']
+['Courgette - Defender F1', 2, 3.25, '=B4*C4']
+[None, None, 'Total', '=SUM(D2:D4)']
+$ soffice --headless --convert-to csv --outdir /home/hatch/workspace/libreoffice-scratch/out seed-orders.xlsx
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/seed-orders.xlsx as a Calc document -> /home/hatch/workspace/libreoffice-scratch/out/seed-orders.csv using filter : Text - txt - csv (StarCalc)
+[exit 0]
+$ the CSV LibreOffice produced:
+Item,Packets,Price,Line total
+Tomato - Gardener's Delight,6,2.5,15
+Sweet Pea - Spencer Mixed,4,1.95,7.8
+Courgette - Defender F1,2,3.25,6.5
+,,Total,29.3
+$ and with an explicit hard-recalc filter option:
+$ soffice --headless --convert-to csv:Text - txt - csv (StarCalc):44,34,76,1,,0,false,true,true,false,false,-1 --outdir /home/hatch/workspace/libreoffice-scratch/out2 seed-orders.xlsx
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/seed-orders.xlsx as a Calc document using filter : Text - txt - csv (StarCalc):44,34,76,1,,0,false,true,true,false,false,-1
+Writing sheet Orders -> /home/hatch/workspace/libreoffice-scratch/out2/seed-orders-Orders.csv
+[exit 0]

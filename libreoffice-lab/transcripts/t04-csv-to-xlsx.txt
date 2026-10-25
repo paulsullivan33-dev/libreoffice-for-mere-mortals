@@ -1,0 +1,18 @@
+$ soffice --headless --convert-to xlsx --outdir /home/hatch/workspace/libreoffice-scratch/out seed-stock.csv
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/seed-stock.csv as a Calc document -> /home/hatch/workspace/libreoffice-scratch/out/seed-stock.xlsx using filter : Calc Office Open XML
+[exit 0]
+$ ls -l /home/hatch/workspace/libreoffice-scratch/out/seed-stock.xlsx
+-rw-rw---- 1 root root 5926 Oct 25 02:21 /home/hatch/workspace/libreoffice-scratch/out/seed-stock.xlsx
+[exit 0]
+$ openpyxl reads the converted xlsx back:
+[('Item', 'str'), ('Variety', 'str'), ('Packets', 'str'), ('Price', 'str')]
+[('Tomato', 'str'), ("Gardener's Delight", 'str'), (42, 'int'), (2.5, 'float')]
+[('Tomato', 'str'), ('Moneymaker', 'str'), (17, 'int'), (2.5, 'float')]
+[('Sweet Pea', 'str'), ('Spencer Mixed', 'str'), (63, 'int'), (1.95, 'float')]
+[('Courgette', 'str'), ('Defender F1', 'str'), (8, 'int'), (3.25, 'float')]
+[('Basil', 'str'), ('Sweet Genovese', 'str'), (25, 'int'), (1.8, 'float')]
+[('Runner Bean', 'str'), ('Scarlet Emperor', 'str'), (31, 'int'), (2.95, 'float')]
+[('Cosmos', 'str'), ('Sensation Mixed', 'str'), (54, 'int'), (1.6, 'float')]
+[('Leek', 'str'), ('Musselburgh', 'str'), (12, 'int'), (2.2, 'float')]
+sum of Packets column: 252

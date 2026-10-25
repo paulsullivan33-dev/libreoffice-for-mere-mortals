@@ -1,0 +1,67 @@
+== a conversion with a brand-new profile ==
+$ ls /home/hatch/workspace/libreoffice-scratch/profiles
+[exit 0]
+$ soffice --headless -env:UserInstallation=file:///home/hatch/workspace/libreoffice-scratch/profiles/fresh --convert-to pdf --outdir /home/hatch/workspace/libreoffice-scratch/out harbour-letter.docx
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/harbour-letter.docx as a Writer document -> /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.pdf using filter : writer_pdf_Export
+Overwriting: /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.pdf
+[exit 0]
+$ what the fresh profile now contains (first run created it):
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/GraphicsRenderTests.log
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/autocorr
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/autotext
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/autotext/mytexts.bau
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/basic
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/basic/Standard
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/basic/Standard/Module1.xba
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/basic/Standard/dialog.xlb
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/basic/Standard/script.xlb
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/basic/dialog.xlc
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/basic/script.xlc
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/config
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/config/autotbl.fmt
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/config/soffice.cfg
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/config/soffice.cfg/modules
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/database
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/database/biblio
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/database/biblio.odb
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/database/biblio/biblio.dbf
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/database/biblio/biblio.dbt
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/extensions
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/extensions/buildid
+/home/hatch/workspace/libreoffice-scratch/profiles/fresh/user/extensions/bundled
+
+== the running-instance trap ==
+$ start a soffice instance that owns profile 'busy':
+Warning: failed to launch javaldx - java may not function correctly
+$ ls -la /home/hatch/workspace/libreoffice-scratch/profiles/busy/user/
+total 8
+drwxrwx--- 1 root root  222 Oct 25 02:22 .
+drwx------ 1 root root   18 Oct 25 02:22 ..
+-rw-rw---- 1 root root 1570 Oct 25 02:22 GraphicsRenderTests.log
+drwxrwx--- 1 root root   22 Oct 25 02:22 autotext
+drwxrwx--- 1 root root   56 Oct 25 02:22 basic
+drwxrwx--- 1 root root   22 Oct 25 02:22 config
+drwxrwx--- 1 root root   32 Oct 25 02:22 database
+drwxrwx--- 1 root root   46 Oct 25 02:22 extensions
+drwxrwx--- 1 root root   32 Oct 25 02:22 gallery
+drwxrwx--- 1 root root    0 Oct 25 02:22 psprint
+-rw------- 1 root root 1432 Oct 25 02:22 registrymodifications.xcu
+drwxrwx--- 1 root root   10 Oct 25 02:22 uno_packages
+[exit 0]
+$ now ask for a conversion using that same busy profile:
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/seed-stock.csv as a Calc document -> /home/hatch/workspace/libreoffice-scratch/out/seed-stock.pdf using filter : calc_pdf_Export
+[exit 0]
+$ did seed-stock.pdf appear?
+-rw-rw---- 1 root root 15094 Oct 25 02:22 /home/hatch/workspace/libreoffice-scratch/out/seed-stock.pdf
+$ stop the instance, repeat the identical conversion:
+$ soffice --headless -env:UserInstallation=file:///home/hatch/workspace/libreoffice-scratch/profiles/busy --convert-to pdf --outdir /home/hatch/workspace/libreoffice-scratch/out seed-stock.csv
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/seed-stock.csv as a Calc document -> /home/hatch/workspace/libreoffice-scratch/out/seed-stock.pdf using filter : calc_pdf_Export
+Overwriting: /home/hatch/workspace/libreoffice-scratch/out/seed-stock.pdf
+[exit 0]
+$ ls -l /home/hatch/workspace/libreoffice-scratch/out/seed-stock.pdf
+-rw-rw---- 1 root root 15094 Oct 25 02:22 /home/hatch/workspace/libreoffice-scratch/out/seed-stock.pdf
+[exit 0]

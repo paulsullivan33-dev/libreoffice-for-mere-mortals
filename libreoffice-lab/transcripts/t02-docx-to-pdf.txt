@@ -1,0 +1,71 @@
+$ soffice --headless --convert-to pdf --outdir /home/hatch/workspace/libreoffice-scratch/out harbour-letter.docx
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/harbour-letter.docx as a Writer document -> /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.pdf using filter : writer_pdf_Export
+[exit 0]
+$ ls -l /home/hatch/workspace/libreoffice-scratch/out
+total 44
+-rw-rw---- 1 root root 42986 Oct 25 02:21 harbour-letter.pdf
+[exit 0]
+$ pdfinfo /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.pdf
+Author:          python-docx
+Creator:         Writer
+Producer:        LibreOffice 24.2
+CreationDate:    Sun Oct 25 02:21:01 2026 UTC
+Custom Metadata: no
+Metadata Stream: no
+Tagged:          yes
+UserProperties:  no
+Suspects:        no
+Form:            none
+JavaScript:      no
+Pages:           1
+Encrypted:       no
+Page size:       612 x 792 pts (letter)
+Page rot:        0
+File size:       42986 bytes
+Optimized:       no
+PDF version:     1.7
+[exit 0]
+$ pdftotext /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.pdf -
+Friends of Harbour Light
+Harbour Road, Port Sable
+12 November 2026
+Dear Member,
+The lighthouse museum closes for its winter refit on Sunday 30 November. This
+letter sets out the winter opening hours and the two volunteer days we are asking
+members to cover.
+From 1 December the museum and shop will open as follows:
+Day
+
+Hours
+
+Wednesday
+Saturday
+Sunday
+
+10:00 - 15:00
+10:00 - 16:00
+11:00 - 15:00
+
+Volunteer days. We need two members for the lantern-room clean on Saturday 6
+December and two more for the archive sorting on Saturday 13 December. No
+experience is needed; bring gloves and a flask.
+
+
+Lantern-room clean - Saturday 6 December, 09:30
+
+
+
+Archive sorting - Saturday 13 December, 09:30
+
+
+
+Carol evening in the lamp room - Friday 19 December, 18:30
+
+The tower itself stays closed until March. The stairs are being re-pointed, and the
+scaffolding makes a fine photograph even if it spoils the view.
+Thank you, as ever, for keeping the light on.
+Margaret Ellison
+Secretary, Friends of Harbour Light
+
+[exit 0]

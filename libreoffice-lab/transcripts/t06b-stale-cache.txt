@@ -1,0 +1,18 @@
+$ hand-edit the xlsx: give D2 a WRONG cached result (999)
+wrote seed-orders-stale.xlsx: D2 formula B2*C2, cached value 999 (true value 15)
+$ soffice --headless --convert-to csv --outdir out seed-orders-stale.xlsx
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/seed-orders-stale.xlsx as a Calc document -> /home/hatch/workspace/libreoffice-scratch/out/seed-orders-stale.csv using filter : Text - txt - csv (StarCalc)
+[exit 0]
+$ the CSV from the stale-cache file:
+Item,Packets,Price,Line total
+Tomato - Gardener's Delight,6,2.5,999
+Sweet Pea - Spencer Mixed,4,1.95,7.8
+Courgette - Defender F1,2,3.25,6.5
+,,Total,1013.3
+
+$ and the missing-file case (note the exit code):
+Warning: failed to launch javaldx - java may not function correctly
+Error: source file could not be loaded
+[exit 0]
+ls: cannot access '/home/hatch/workspace/libreoffice-scratch/out/no-such-file.csv': No such file or directory

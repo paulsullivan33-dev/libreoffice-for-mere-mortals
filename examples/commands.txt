@@ -1,0 +1,34 @@
+$ soffice --version
+LibreOffice 24.2.7.2 420(Build:2)
+
+$ # the letter, faithfully (t02)
+$ soffice --headless --convert-to pdf --outdir out/ harbour-letter.docx
+convert harbour-letter.docx as a Writer document -> out/harbour-letter.pdf using filter : writer_pdf_Export
+$ pdftotext out/harbour-letter.pdf - | head -3
+Friends of Harbour Light
+Harbour Road, Port Sable
+12 November 2026
+
+$ # the same letter into the native format (t03)
+$ soffice --headless --convert-to odt --outdir out/ harbour-letter.docx
+
+$ # a CSV becomes a spreadsheet, checked cell by cell (t04)
+$ soffice --headless --convert-to xlsx --outdir out/ seed-stock.csv
+
+$ # round trip through ODS (t05) - values survive, trailing zeros don't
+$ soffice --headless --convert-to ods --outdir out/ seed-stock.csv
+$ soffice --headless --convert-to csv --outdir roundtrip/ out/seed-stock.ods
+$ diff seed-stock.csv roundtrip/seed-stock.csv
+
+$ # batch with a profile of its own and an assertion per file (ch. 10)
+$ for f in letters/*.docx; do
+    soffice --headless -env:UserInstallation=file:///srv/convert/profile \
+      --convert-to pdf --outdir pdfs/ "$f"
+    test -f "pdfs/${f%.docx}.pdf" || echo "FAILED: $f"
+  done
+
+$ # a Basic macro from the shell (t09)
+$ soffice --headless -env:UserInstallation=file:///…/profiles/macro \
+    "vnd.sun.star.script:Standard.Module1.Proof?language=Basic&location=application"
+$ cat macro-proof.txt
+LibreOffice Basic macro ran here.

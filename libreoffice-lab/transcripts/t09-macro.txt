@@ -1,0 +1,5 @@
+$ soffice --headless 'vnd.sun.star.script:Standard.Module1.Proof?language=Basic&location=application'
+[exit 0]
+$ did the proof file appear?
+-rw-rw---- 1 root root 34 Oct 25 02:25 /home/hatch/workspace/libreoffice-scratch/macro-proof.txt
+LibreOffice Basic macro ran here.

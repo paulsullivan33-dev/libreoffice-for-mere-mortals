@@ -1,0 +1,8 @@
+$ soffice (Start Center) under Xvfb, profile 'gui'
+$ xdotool search --name '' getwindowname %@
+LibreOffice 24.2
+VCL ImplGetDefaultWindow
+LibreOffice 24.2
+LibreOffice
+$ import -window root start-center.png
+-rw-rw---- 1 root root 185786 Oct 25 02:24 /home/hatch/workspace/libreoffice-scratch/start-center.png

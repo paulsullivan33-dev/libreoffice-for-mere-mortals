@@ -1,0 +1,31 @@
+$ soffice --headless --convert-to odt --outdir /home/hatch/workspace/libreoffice-scratch/out harbour-letter.docx
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/harbour-letter.docx as a Writer document -> /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.odt using filter : writer8
+[exit 0]
+$ ls -l /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.odt
+-rw-rw---- 1 root root 29467 Oct 25 02:21 /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.odt
+[exit 0]
+$ unzip -l /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.odt
+Archive:  /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.odt
+  Length      Date    Time    Name
+---------  ---------- -----   ----
+       39  2026-10-25 02:21   mimetype
+        0  2026-10-25 02:21   Configurations2/toolpanel/
+        0  2026-10-25 02:21   Configurations2/floater/
+        0  2026-10-25 02:21   Configurations2/statusbar/
+        0  2026-10-25 02:21   Configurations2/toolbar/
+        0  2026-10-25 02:21   Configurations2/progressbar/
+        0  2026-10-25 02:21   Configurations2/popupmenu/
+        0  2026-10-25 02:21   Configurations2/menubar/
+    94992  2026-10-25 02:21   styles.xml
+      260  2026-10-25 02:21   manifest.rdf
+    11201  2026-10-25 02:21   content.xml
+     1240  2026-10-25 02:21   meta.xml
+    12295  2026-10-25 02:21   settings.xml
+    16872  2026-10-25 02:21   Thumbnails/thumbnail.png
+     1061  2026-10-25 02:21   META-INF/manifest.xml
+---------                     -------
+   137960                     15 files
+[exit 0]
+$ text extracted from content.xml:
+ Friends of Harbour Light Harbour Road, Port Sable 12 November 2026 Dear Member, The lighthouse museum closes for its winter refit on Sunday 30 November. This letter sets out the winter opening hours and the two volunteer days we are asking members to cover. From 1 December the museum and shop will open as follows: Day Hours Wednesday 10:00 - 15:00 Saturday 10:00 - 16:00 Sunday 11:00 - 15:00 Volunteer days. We need two members for the lantern-room clean on Saturday 6 December and two more for the archive sorting on Saturday 13 December. No experience is needed; bring gloves and a flask. Lantern-room clean - Saturday 6 December, 09:30 Archive sorting - Saturday 13 December, 09:30 Carol evening in the lamp room - Friday 19 December, 18:30 The tower itself stays closed until March. The stairs are being re-pointed, and the scaffolding makes a fine photograph even if it spoils the view. Thank you, as ever, for keeping the light on. Margaret Ellison Secretary, Friends of Harbour Light 

@@ -1,0 +1,97 @@
+Lab notes - LibreOffice for Mere Mortals
+Built and verified 2026-10-24/25 against
+LibreOffice 24.2.7.2 (Ubuntu package
+4:24.2.7-0ubuntu0.24.04.7) on a 2-CPU,
+7.7 GB sandbox running Ubuntu 24.04.
+Full ledger in criteria.md; raw runs in
+libreoffice-lab/transcripts/ (t00-t09).
+
+THE SHAPE OF IT
+- One program, `soffice`, with component
+  faces. `soffice --version` answers
+  even with the windows removed.
+- The sandbox arrived with the HEADLESS
+  packaging (libreoffice-*-nogui). All
+  conversions t01-t07 ran on that build
+  of 24.2.7. The full build was then
+  installed (third apt attempt: naming
+  the full packages explicitly resolved
+  the mutual Conflicts that defeated
+  the metapackage) and t08/t09 ran on
+  it. Same version throughout.
+
+WHAT RAN, IN ONE LINE EACH
+- t01 fixtures: python-docx letter with
+  heading, list and shaded table;
+  openpyxl sheet whose formulas carry
+  EMPTY cached values (<v></v>).
+- t02 docx->pdf: pdfinfo says 1 page,
+  Tagged: yes, Producer LibreOffice
+  24.2. pdftotext read back every word,
+  table days and hours included.
+- t03 docx->odt: content.xml text pulled
+  by script - every paragraph present.
+- t04 csv->xlsx: a second library read
+  the cells: words as str, quantities as
+  int, prices as float; Packets sum 252.
+- t05 csv->ods->csv: diff shows ONLY
+  trailing zeros (2.50->2.5). Values
+  identical; spelling is formatting.
+- t06 xlsx->csv, formulas with no cached
+  answers: CALCULATED (15, 7.8, 6.5,
+  total 29.3). Missing cache = computed.
+- t06b same sheet, one cached answer
+  hand-poisoned to 999: TRUSTED VERBATIM
+  (999 printed; total recalculated over
+  it: 1013.3). Also: a nonexistent
+  input prints an error and EXITS 0.
+  Test for the output file, not $?.
+- t07 profiles: -env:UserInstallation on
+  an empty folder grows a whole profile
+  in one run. With a headless instance
+  holding a profile, a conversion naming
+  that profile delegates to it (no
+  fresh-process javaldx warning) and
+  the PDF still appears.
+- t08 the window, on Xvfb: Start Center
+  screenshotted (left rail: Open File,
+  Remote Files, Recent Documents,
+  Templates; Create list naming all six
+  components). Writer opened the letter;
+  style box read "Heading 1, Calibri,
+  14 pt"; status bar: 172 words, 974
+  characters. On the full build the
+  javaldx warning is gone (a JRE came
+  with it) and the t02 conversion
+  reproduced identical text.
+- t09 a Basic macro in a profile module,
+  invoked headlessly by script URL,
+  wrote its proof file. Genuinely run.
+
+SMALL TRUTHS WORTH THE INK
+- javaldx warning = grumble, not a stop
+  sign: every -nogui run printed it and
+  every conversion worked.
+- Naming a CSV filter WITH options made
+  the converter write one file per
+  sheet (seed-orders-Orders.csv). The
+  plain --convert-to csv used sensible
+  defaults throughout. Mortals: plain
+  form until a named wrong appears.
+- The CSV filter's defaults also chose
+  the first sheet only, silently.
+
+NOT RUN (documented only, labelled)
+- Deep interactive editing. The window
+  is real and was opened, read and
+  screenshotted; the afternoon of
+  typing, dragging and formatting that
+  would prove the editing *feel* was
+  not simulated, and chapters 4-7 say
+  so rather than borrow authority.
+- Impress/Draw beyond the survey;
+  Base beyond a paragraph; printing to
+  paper; VBA execution; the Python-UNO
+  bridge beyond its shape.
+- Windows/macOS installs and behaviour
+  (documented; the lab is Linux).

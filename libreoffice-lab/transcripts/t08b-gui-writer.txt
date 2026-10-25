@@ -1,0 +1,16 @@
+$ open the lab letter in Writer
+LibreOffice 24.2
+VCL ImplGetDefaultWindow
+LibreOffice 24.2
+harbour-letter.docx — LibreOffice Writer
+LibreOffice 24.2
+-rw-rw---- 1 root root 134264 Oct 25 02:25 /home/hatch/workspace/libreoffice-scratch/writer-letter.png
+$ conversion re-run on the full build (compare t02):
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/harbour-letter.docx as a Writer document -> /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.pdf using filter : writer_pdf_Export
+Overwriting: /home/hatch/workspace/libreoffice-scratch/out/harbour-letter.pdf
+[exit 0]
+Friends of Harbour Light
+Harbour Road, Port Sable
+12 November 2026
+Dear Member,
+The lighthouse museum closes for its winter refit on Sunday 30 November. This

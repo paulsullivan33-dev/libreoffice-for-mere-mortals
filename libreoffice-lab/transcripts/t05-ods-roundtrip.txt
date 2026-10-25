@@ -1,0 +1,40 @@
+$ soffice --headless --convert-to ods --outdir /home/hatch/workspace/libreoffice-scratch/out seed-stock.csv
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/fixtures/seed-stock.csv as a Calc document -> /home/hatch/workspace/libreoffice-scratch/out/seed-stock.ods using filter : calc8
+[exit 0]
+$ ls -l /home/hatch/workspace/libreoffice-scratch/out/seed-stock.ods
+-rw-rw---- 1 root root 16568 Oct 25 02:21 /home/hatch/workspace/libreoffice-scratch/out/seed-stock.ods
+[exit 0]
+$ soffice --headless --convert-to csv --outdir /home/hatch/workspace/libreoffice-scratch/roundtrip /home/hatch/workspace/libreoffice-scratch/out/seed-stock.ods
+Warning: failed to launch javaldx - java may not function correctly
+convert /home/hatch/workspace/libreoffice-scratch/out/seed-stock.ods as a Calc document -> /home/hatch/workspace/libreoffice-scratch/roundtrip/seed-stock.csv using filter : Text - txt - csv (StarCalc)
+[exit 0]
+$ cat /home/hatch/workspace/libreoffice-scratch/roundtrip/seed-stock.csv
+Item,Variety,Packets,Price
+Tomato,Gardener's Delight,42,2.5
+Tomato,Moneymaker,17,2.5
+Sweet Pea,Spencer Mixed,63,1.95
+Courgette,Defender F1,8,3.25
+Basil,Sweet Genovese,25,1.8
+Runner Bean,Scarlet Emperor,31,2.95
+Cosmos,Sensation Mixed,54,1.6
+Leek,Musselburgh,12,2.2
+[exit 0]
+$ diff original vs round-tripped:
+2,3c2,3
+< Tomato,Gardener's Delight,42,2.50
+< Tomato,Moneymaker,17,2.50
+---
+> Tomato,Gardener's Delight,42,2.5
+> Tomato,Moneymaker,17,2.5
+6c6
+< Basil,Sweet Genovese,25,1.80
+---
+> Basil,Sweet Genovese,25,1.8
+8,9c8,9
+< Cosmos,Sensation Mixed,54,1.60
+< Leek,Musselburgh,12,2.20
+---
+> Cosmos,Sensation Mixed,54,1.6
+> Leek,Musselburgh,12,2.2
+[diff exit 1]

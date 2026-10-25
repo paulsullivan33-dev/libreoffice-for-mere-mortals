@@ -1,0 +1,30 @@
+site_name: LibreOffice for Mere Mortals
+site_description: The free office suite on a machine of your own. Documents, spreadsheets and presentations in Writer, Calc and Impress, the file formats they live in, and the headless engine that converts files by the folderful, all checked against the real program.
+site_url: https://paulsullivan33-dev.github.io/libreoffice-for-mere-mortals/
+
+# Guides live at the repo root (nice for GitHub browsing).
+# The deploy workflow copies them into docs/ before building.
+theme:
+  name: material
+
+nav:
+  - Home: index.md
+  - What LibreOffice Is: what-libreoffice-is.md
+  - The Moving Parts: the-moving-parts.md
+  - Installing LibreOffice: installing-libreoffice.md
+  - Your First Document: your-first-document.md
+  - Writer — Documents and Styles: writer-documents-and-styles.md
+  - Calc — Spreadsheets: calc-spreadsheets.md
+  - Impress and Draw: impress-and-draw.md
+  - Files and Formats: files-and-formats.md
+  - Converting from the Command Line: converting-from-the-command-line.md
+  - Batch Conversion and Profiles: batch-conversion-and-profiles.md
+  - Templates and Defaults: templates-and-defaults.md
+  - Macros and Automation: macros-and-automation.md
+  - Printing and PDF: printing-and-pdf.md
+  - Recipes: recipes.md
+  - The Neighbours: the-neighbours.md
+  - Limits: limits.md
+  - Troubleshooting: troubleshooting.md
+  - Glossary: glossary.md
+  - Writing Criteria: criteria.md
