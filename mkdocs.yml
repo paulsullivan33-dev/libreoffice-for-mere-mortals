@@ -1,6 +1,7 @@
 site_name: LibreOffice for Mere Mortals
 site_description: The free office suite on a machine of your own. Documents, spreadsheets and presentations in Writer, Calc and Impress, the file formats they live in, and the headless engine that converts files by the folderful, all checked against the real program.
 site_url: https://paulsullivan33-dev.github.io/libreoffice-for-mere-mortals/
+copyright: 'Part of <a href="https://paulsullivan33-dev.github.io/mere-mortals/">For Mere Mortals</a> · Text <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a>, code MIT'
 
 # Guides live at the repo root (nice for GitHub browsing).
 # The deploy workflow copies them into docs/ before building.
